@@ -199,9 +199,18 @@ L'image (`Dockerfile`) embarque PHP 8.3, Apache et l'extension `yaml`, avec `pub
 
 #### Lancement
 
+Cloner le dépôt avec votre compte habituel, pas en `root` (c'est lui qui fera les mises à jour). Puis donner au groupe d'Apache le droit d'écrire dans `data/` : dans le conteneur, Apache tourne sous `www-data` (uid **33**), et vos fichiers appartiennent à votre compte. Sans cette étape, l'affichage fonctionne mais tout enregistrement échoue (« attempt to write a readonly database »). Le **répertoire** `data/` doit lui-même être accessible en écriture : SQLite y crée son journal, et OscarDB y génère les `.yml` manquants.
+
 ```bash
-docker compose up -d --build
+sudo chgrp -R www-data data && sudo chmod -R g+w data && sudo chmod g+s data
+docker compose up -d --build        # sous Debian : sudo docker compose …
 ```
+
+Le `g+s` fait hériter le groupe `www-data` aux fichiers créés ensuite dans `data/`. Ne pas faire de `chown` vers `www-data` : votre compte ne pourrait plus y écrire, et `git pull` échouerait.
+
+Vos bases peuvent aussi vivre **hors du dépôt** (par exemple `/srv/oscar/data`) : remplacer `./data` par ce chemin dans `docker-compose.yml`, et appliquer les mêmes droits à ce dossier. Un `git pull` ne peut alors jamais les toucher.
+
+Deuxième OscarDB sur le même serveur : changer `container_name` et le port dans `docker-compose.yml`.
 
 #### `docker-compose.yml`
 
@@ -231,11 +240,10 @@ services:
 #### Mise à jour
 
 ```bash
-git pull
-docker compose up -d --build
+umask 002 && git pull --ff-only
 ```
 
-Les données dans `./data/` ne sont pas affectées.
+Le code est monté dans le conteneur : il est servi dès que les fichiers sont remplacés, sans redémarrage. `docker compose up -d --build` n'est nécessaire que si le `Dockerfile` a changé (le CHANGELOG le signale). `umask 002` garde les fichiers réécrits modifiables par le groupe ; `--ff-only` arrête proprement la mise à jour si un fichier suivi a été modifié sur le serveur. Vos bases (autres que les trois exemples) et `config/oscar.php` sont ignorés par Git et ne sont jamais touchés. Si vous avez modifié une base d'exemple sur le serveur, la mise à jour s'arrête : `git checkout -- data/Bouquins.db` (par exemple) la remet dans l'état du dépôt.
 
 #### Piège courant : renommage de dossier
 

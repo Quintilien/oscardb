@@ -201,9 +201,18 @@ The image (`Dockerfile`) contains PHP 8.3, Apache and the `yaml` extension, with
 
 #### Starting
 
+Clone the repository with your usual account, not as `root` (that account will do the updates). Then give Apache's group write access to `data/`: in the container, Apache runs as `www-data` (uid **33**), and your files belong to your account. Without this step, display works but every save fails ("attempt to write a readonly database"). The `data/` **directory** itself must be writable: SQLite creates its journal there, and OscarDB generates missing `.yml` files there.
+
 ```bash
-docker compose up -d --build
+sudo chgrp -R www-data data && sudo chmod -R g+w data && sudo chmod g+s data
+docker compose up -d --build        # on Debian: sudo docker compose …
 ```
+
+`g+s` makes files created later in `data/` inherit the `www-data` group. Do not `chown` to `www-data`: your account could no longer write there, and `git pull` would fail.
+
+Your databases can also live **outside the repository** (for example `/srv/oscar/data`): replace `./data` with that path in `docker-compose.yml`, and apply the same permissions to that folder. A `git pull` can then never touch them.
+
+Second OscarDB on the same server: change `container_name` and the port in `docker-compose.yml`.
 
 #### `docker-compose.yml`
 
@@ -233,11 +242,10 @@ services:
 #### Updating
 
 ```bash
-git pull
-docker compose up -d --build
+umask 002 && git pull --ff-only
 ```
 
-The data in `./data/` is not affected.
+The code is mounted in the container: it is served as soon as the files are replaced, without a restart. `docker compose up -d --build` is only needed if the `Dockerfile` has changed (the CHANGELOG says so). `umask 002` keeps rewritten files writable by the group; `--ff-only` stops the update cleanly if a tracked file was modified on the server. Your databases (other than the three samples) and `config/oscar.php` are ignored by Git and never touched. If you modified a sample database on the server, the update stops: `git checkout -- data/Bouquins.db` (for example) restores it to the repository's state.
 
 #### Common pitfall: renaming a folder
 
