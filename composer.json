@@ -1,0 +1,8 @@
+{
+    "name": "quintilien/oscardb",
+    "description": "Generic web CRUD interface for SQLite databases",
+    "license": "AGPL-3.0-or-later",
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.4"
+    }
+}

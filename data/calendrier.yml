@@ -1,0 +1,196 @@
+views:
+  Calendrier:
+    display:
+      id: true
+      Date: true
+      Début à: true
+      Fin: true
+      Groupe: true
+      Descr.: true
+      Lieu: true
+      Agapes: true
+      Archive: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      Date:
+        type: date
+        align: right
+        decimals: null
+      Début à:
+        type: text
+        align: left
+        decimals: null
+      Fin:
+        type: text
+        align: left
+        decimals: null
+      Groupe:
+        type: text
+        align: left
+        decimals: null
+      Descr.:
+        type: text
+        align: left
+        decimals: null
+      Lieu:
+        type: text
+        align: left
+        decimals: null
+      Agapes:
+        type: text
+        align: left
+        decimals: null
+      Archive:
+        type: boolean
+        align: right
+        decimals: null
+  Réf.agapes:
+    display:
+      id: true
+      ref: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+        label: 'Libellé'
+  Réf.groupes:
+    display:
+      id: true
+      ref: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+        label: 'Libellé'
+  Réf.heures:
+    display:
+      id: true
+      ref: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+        label: 'Libellé'
+tables:
+  agapes:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+        label: 'Libellé'
+  evenements:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      jour:
+        type: date
+        align: left
+        decimals: null
+        width: 150px
+        label: 'Date'
+      heure_debut:
+        type: text
+        align: left
+        decimals: null
+        width: 150px
+        label: 'Heure de début'
+      heure_fin:
+        type: text
+        align: left
+        decimals: null
+        width: 150px
+        label: 'Heure de fin'
+      groupe:
+        type: text
+        align: left
+        decimals: null
+        label: 'Groupe'
+      descr:
+        type: text
+        align: left
+        decimals: null
+        label: 'Description'
+      lieu:
+        type: text
+        align: left
+        decimals: null
+        label: 'Lieu'
+      agapes:
+        type: int
+        align: right
+        decimals: null
+        label: 'Repas'
+      arch:
+        type: boolean
+        align: right
+        decimals: null
+        label: 'Archive'
+      uid:
+        type: text
+        align: left
+        decimals: null
+        width: -1
+      seq:
+        type: text
+        align: left
+        decimals: null
+        width: -1
+  groupes:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+        label: 'Libellé'
+  heures:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+        label: 'Libellé'

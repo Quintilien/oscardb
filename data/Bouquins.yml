@@ -1,0 +1,94 @@
+views:
+  Collections:
+    display:
+      id: true
+      titre: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      titre:
+        type: text
+        align: left
+        decimals: null
+        width: 300px
+  Titres:
+    display:
+      id: true
+      Titre: true
+      Collection: true
+      Parution: true
+      Notes: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      Titre:
+        type: text
+        align: left
+        decimals: null
+        width: 350px
+      Collection:
+        type: text
+        align: left
+        decimals: null
+        width: 250px
+      Parution:
+        type: int
+        align: right
+        decimals: null
+      Notes:
+        type: text
+        align: left
+        decimals: null
+        width: 350px
+tables:
+  t_collections:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      titre:
+        type: text
+        align: left
+        decimals: null
+        width: 350px
+        label: "Titre de la collection"
+  t_titres:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      nom:
+        type: text
+        align: left
+        decimals: null
+        label: "Titre"
+      parution:
+        type: int
+        align: right
+        decimals: null
+        width: 80px
+        label: "Année de parution"
+      fk_collection:
+        type: int
+        align: right
+        decimals: null
+        label: "Collection"
+      note:
+        type: textarea
+        align: left
+        decimals: null
+        label: "Note"
+        width: 500px
+        height: 350px

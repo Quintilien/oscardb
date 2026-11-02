@@ -1,0 +1,20 @@
+services:
+  oscar:
+    build: .
+    container_name: oscar
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8084:80"
+    volumes:
+      # Same layout as on shared hosting;
+      # only public/ is the web root (see Dockerfile).
+      - ./config:/var/www/config
+      - ./src:/var/www/src
+      - ./public:/var/www/public
+      - ./vendor:/var/www/vendor
+      - ./data:/var/www/data
+    # deploy:
+    #  resources:
+    #    limits:
+    #      memory: 1G   # enough for 5 simultaneous users
+    #      cpus: '1'

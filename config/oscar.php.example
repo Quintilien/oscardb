@@ -1,0 +1,30 @@
+<?php
+/*
+ * OscarDB — configuration
+ * Copyright (C) 2026 PhS & Quintilien
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ *
+ * Template tracked by Git. To configure your installation, copy it to
+ * config/oscar.php (ignored by Git, so never overwritten by an update)
+ * and edit the copy. Without config/oscar.php, OscarDB reads this template.
+ */
+
+return [
+    'app_title' => 'OscarDB',
+
+    // Name of the .db file opened by default; it must be in data/
+    // (only the name counts: databases are always looked for in data/).
+    'default_database' => 'Bouquins.db',
+
+    // Time zone of the dates OscarDB produces (export names…).
+    'timezone' => 'Europe/Brussels',
+
+    // Show PHP errors on screen. Only turn on to diagnose a problem:
+    // the messages reveal paths and SQL queries.
+    'debug' => false,
+
+    // Red banner if no upstream authentication is detected (host's
+    // authentication, Tinyauth, Authelia…). Set to false only if the interface
+    // is protected in a way PHP cannot see.
+    'warn_unprotected' => true,
+];

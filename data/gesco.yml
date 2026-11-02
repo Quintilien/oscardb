@@ -1,0 +1,663 @@
+views:
+  "Réf. catégories":
+    display:
+      id: true
+      ref: true
+      descr: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: 50px
+      ref:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      descr:
+        type: text
+        align: left
+        decimals: null
+        width: 290px
+  Commandes:
+    display:
+      id: true
+      ref_commande: true
+      external_ref: true
+      date_commande: true
+      Archive: true
+      libelle: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: 50px
+      ref_commande:
+        type: text
+        align: left
+        decimals: null
+        width: 90px
+      external_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 120px
+      date_commande:
+        type: date
+        align: right
+        decimals: null
+        width: 140px
+      Archive:
+        type: boolean
+        align: center
+        decimals: null
+        width: 50px
+      libelle:
+        type: text
+        align: left
+        decimals: null
+        width: 200px
+  "Commandes (prix de revient)":
+    display:
+      ref_commande: true
+      date_commande: true
+      st: true
+      categ_ref: true
+      art_out_ref: true
+      art_in_ref: true
+      descr_specifique: true
+      libelle: true
+      quantite: true
+      unite: true
+      pru_specifique: true
+      prix_unit: true
+      remise: true
+      total: true
+      prix_incomplet: true
+      prix_revient: true
+      marge: true
+      pourcentage_marge: true
+      _row_id: true
+    fields:
+      ref_commande:
+        type: text
+        align: left
+        decimals: null
+        width: 90px
+      date_commande:
+        type: date
+        align: right
+        decimals: null
+        width: 140px
+      st:
+        type: text
+        align: left
+        decimals: null
+        width: -1
+      categ_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      art_out_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 100px
+      art_in_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 80px
+      descr_specifique:
+        type: boolean
+        align: center
+        decimals: null
+        width: 80px
+      libelle:
+        type: text
+        align: left
+        decimals: null
+        width: 260px
+      quantite:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      unite:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      pru_specifique:
+        type: boolean
+        align: center
+        decimals: null
+        width: 80px
+      prix_unit:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      remise:
+        type: real
+        align: right
+        decimals: 2
+        width: 90px
+      total:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      prix_incomplet:
+        type: boolean
+        align: center
+        decimals: null
+        width: 80px
+      prix_revient:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      marge:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      pourcentage_marge:
+        type: real
+        align: right
+        decimals: 2
+        width: 90px
+      _row_id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      _search_commande:
+        type: text
+        align: left
+        decimals: null
+        width: -1
+  "Commandes (détail)":
+    display:
+      ref_commande: true
+      date_commande: true
+      st: true
+      art_ref: true
+      descr_specifique: true
+      libelle: true
+      quantite: true
+      unite: true
+      pru_specifique: true
+      prix_unit: true
+      remise: true
+      total: true
+      sous_total: true
+      _row_id: true
+    fields:
+      ref_commande:
+        type: text
+        align: left
+        decimals: null
+        width: 90px
+      date_commande:
+        type: date
+        align: right
+        decimals: null
+        width: 140px
+      st:
+        type: text
+        align: left
+        decimals: null
+        width: -1
+      art_ref:
+        type: text
+        align: left
+        decimals: null
+        width: -1
+      descr_specifique:
+        type: boolean
+        align: center
+        decimals: null
+        width: 80px
+      libelle:
+        type: text
+        align: left
+        decimals: null
+        width: 260px
+      quantite:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      unite:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      pru_specifique:
+        type: boolean
+        align: center
+        decimals: null
+        width: 80px
+      prix_unit:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      remise:
+        type: real
+        align: right
+        decimals: 2
+        format: blank_zero        
+        width: 90px
+      total:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      sous_total:
+        type: real
+        align: right
+        decimals: 2
+        width: 100px
+      _row_id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      _search_commande:
+        type: text
+        align: left
+        decimals: null
+        width: -1
+  Composants:
+    display:
+      id: true
+      ref: true
+      descr: true
+      categ_ref: true
+      categ_descr: true
+      unit: true
+      pru: true
+      updated: true
+      supplier: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: 50px
+      ref:
+        type: text
+        align: left
+        decimals: null
+        width: 80px
+      descr:
+        type: text
+        align: left
+        decimals: null
+        width: 190px
+      categ_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      categ_descr:
+        type: text
+        align: left
+        decimals: null
+        width: 240px
+      unit:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      pru:
+        type: real
+        align: right
+        decimals: 2
+        width: 90px
+      updated:
+        type: date
+        align: right
+        decimals: null
+        width: 140px
+      supplier:
+        type: text
+        align: left
+        decimals: null
+        width: 90px
+  Composition:
+    display:
+      st: true
+      categ_ref: true
+      art_out_ref: true
+      art_in_ref: true
+      libelle: true
+      unite: true
+      quantite: true
+      prix_incomplet: true
+      prix_revient: true
+      updated: true
+      supplier: true
+      prix_vente: true
+      marge: true
+      pourcentage_marge: true
+      _row_id: true
+    fields:
+      st:
+        type: text
+        align: left
+        decimals: null
+        width: 50px
+      categ_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      art_out_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 80px
+      art_in_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 80px
+      libelle:
+        type: text
+        align: left
+        decimals: null
+        width: 240px
+      unite:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      quantite:
+        type: real
+        align: right
+        decimals: 2
+        width: 80px
+      prix_incomplet:
+        type: real
+        align: right
+        decimals: 2
+        width: 80px
+      prix_revient:
+        type: real
+        align: right
+        decimals: 2
+        width: 90px
+      updated:
+        type: date
+        align: right
+        decimals: null
+        width: 140px
+      supplier:
+        type: text
+        align: left
+        decimals: null
+        width: 90px
+      prix_vente:
+        type: real
+        align: right
+        decimals: 2
+        width: 90px
+      marge:
+        type: real
+        align: right
+        decimals: 2
+        width: 80px
+      pourcentage_marge:
+        type: real
+        align: right
+        decimals: 2
+        width: 80px
+      _row_id:
+        type: int
+        align: right
+        decimals: null
+        width: 50px
+  Composés:
+    display:
+      id: true
+      ref: true
+      descr: true
+      categ_ref: true
+      categ_descr: true
+      unit: true
+      pu: true
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: 50px
+      ref:
+        type: text
+        align: left
+        decimals: null
+        width: 110px
+      descr:
+        type: text
+        align: left
+        decimals: null
+        width: 260px
+      categ_ref:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      categ_descr:
+        type: text
+        align: left
+        decimals: null
+        width: 240px
+      unit:
+        type: text
+        align: left
+        decimals: null
+        width: 60px
+      pu:
+        type: real
+        align: right
+        decimals: 2
+        width: 90px
+tables:
+  art_in:
+    pk: id
+    lookup_label: "\"ref\" || ' - ' || COALESCE(\"descr\", '')"
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+      descr:
+        type: text
+        align: left
+        decimals: null
+      unit:
+        type: int
+        align: right
+        decimals: null
+      pru:
+        type: real
+        align: right
+        decimals: 2
+      updated:
+        type: date
+        align: right
+        decimals: null
+      supplier:
+        type: text
+        align: left
+        decimals: null
+      categ:
+        type: int
+        align: right
+        decimals: null
+  art_in_out:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      art_out:
+        type: int
+        align: right
+        decimals: null
+      qty:
+        type: real
+        align: right
+        decimals: 2
+      art_in:
+        type: int
+        align: right
+        decimals: null
+  art_out:
+    pk: id
+    lookup_label: "\"ref\" || ' - ' || COALESCE(\"descr\", '')"
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+      descr:
+        type: text
+        align: left
+        decimals: null
+      categ:
+        type: int
+        align: right
+        decimals: null
+      unit:
+        type: int
+        align: right
+        decimals: null
+      pu:
+        type: real
+        align: right
+        decimals: 2
+  categ:
+    pk: id
+    lookup_label: "\"ref\" || ' - ' || COALESCE(\"descr\", '')"
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+      descr:
+        type: text
+        align: left
+        decimals: null
+  order_detail:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      fk_ord:
+        type: int
+        align: right
+        decimals: null
+        width: 300px
+      art_out:
+        type: int
+        align: right
+        decimals: null
+        width: 300px
+      qty:
+        type: real
+        align: right
+        decimals: 2
+      descr_is_specific:
+        type: boolean
+        align: center
+        decimals: null
+      descr:
+        type: text
+        align: left
+        decimals: null
+      pru_is_specific:
+        type: boolean
+        align: center
+        decimals: null
+      pru:
+        type: real
+        align: right
+        decimals: 2
+      discn:
+        type: real
+        align: right
+        decimals: 2
+  order_header:
+    pk: id
+    lookup_label: "\"ref\" || ' - ' || \"orderdate\" || CASE WHEN \"external_ref\" IS NOT NULL AND \"external_ref\" <> '' THEN ' (' || \"external_ref\" || ')' ELSE '' END"
+
+    lookup_where: "\"arch\" IS NOT 1"
+    # lookup_order_by: "ref COLLATE NOCASE"
+    lookup_limit: 20
+
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      ref:
+        type: text
+        align: left
+        decimals: null
+      descr:
+        type: text
+        align: left
+        decimals: null
+      orderdate:
+        type: date
+        align: right
+        decimals: null
+      arch:
+        type: boolean
+        align: center
+        decimals: null
+      external_ref:
+        type: text
+        align: left
+        decimals: null
+  unit_ref:
+    pk: id
+    fields:
+      id:
+        type: int
+        align: right
+        decimals: null
+        width: -1
+      descr:
+        type: text
+        align: left
+        decimals: null

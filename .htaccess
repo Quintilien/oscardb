@@ -1,0 +1,11 @@
+# OscarDB — safety net, for Apache only.
+#
+# The web root must be the public/ folder (see README, "Deployment").
+# This file only matters if the whole OscarDB folder was put as is in the
+# web root: it then prevents downloading the databases, the configuration
+# and the code. It does not replace the proper layout, and it has no effect
+# on nginx, Caddy or any server that ignores .htaccess.
+
+RedirectMatch 404 (?i)/(config|data|src|lib|vendor)(/|$)
+RedirectMatch 404 (?i)/(composer\.(json|lock)|README(\.fr)?\.md|CHANGELOG(\.fr)?\.md|LICENSE(\.md)?|Dockerfile|docker-compose\.yml)$
+RedirectMatch 404 /\.(git|gitignore|htaccess)

@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# vendor/ is committed on purpose: the repository must install as is,
+# including by FTP on shared hosting, without Composer.
+
+# Configuration specific to the installation (the template oscar.php.example is tracked)
+config/oscar.php
+
+# Databases: only the three samples are tracked; your own databases
+# (and SQLite temporary files) are never committed.
+data/*
+!data/Bouquins.db
+!data/Bouquins.yml
+!data/calendrier.db
+!data/calendrier.yml
+!data/gesco.db
+!data/gesco.yml
