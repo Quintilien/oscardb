@@ -11,6 +11,14 @@ marking its fifth generation (after the Python versions). The name becomes
 OscarDB and the 5 moves into the version number: OscarDB5 3.0.0 and 3.0.1
 become 5.0.0 and 5.0.1. Earlier entries keep their original numbers.
 
+## 5.0.3 — 2 November 2026
+
+- Logo: a card-index tray, in the same family as the CMS Lite logo
+  (`docs/oscardb-logo.png`, shown at the top of the README).
+- Browser tab icon (`public/assets/favicon.svg`, `apple-touch-icon.png`).
+
+Updating: `git pull`.
+
 ## 5.0.2 — 2 November 2026
 
 No change in behaviour: preparation for the publication of the code.

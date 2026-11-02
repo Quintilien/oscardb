@@ -10,7 +10,7 @@ declare(strict_types=1);
 // Layout (5.0.0, as in CMS Lite): only public/ is served;
 //   config/  data/  src/  vendor/  sit next to it, at the same level.
 const OSCAR_ROOT = __DIR__ . '/..';
-const OSCAR_VERSION = '5.0.2';
+const OSCAR_VERSION = '5.0.3';
 
 // Configuration: config/oscar.php (specific to the installation, ignored by Git),
 // otherwise config/oscar.php.example (the repository works as soon as it is cloned).
@@ -468,6 +468,8 @@ function render_header(string $title=''): void {
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <title>$title_text</title>
+<link rel='icon' href='assets/favicon.svg' type='image/svg+xml'>
+<link rel='apple-touch-icon' href='assets/apple-touch-icon.png'>
 <link rel='stylesheet' href='assets/app.css?v=$version'>
 </head>
 <body>

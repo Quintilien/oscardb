@@ -12,6 +12,14 @@ devient OscarDB et le 5 passe dans le numéro de version : OscarDB5 3.0.0 et
 3.0.1 deviennent 5.0.0 et 5.0.1. Les entrées antérieures gardent leur
 numéro d'origine.
 
+## 5.0.3 — 2 novembre 2026
+
+- Logo : un bac à fiches, de la même famille que celui de CMS Lite
+  (`docs/oscardb-logo.png`, en tête du README).
+- Icône d'onglet du navigateur (`public/assets/favicon.svg`, `apple-touch-icon.png`).
+
+Mise à jour : `git pull`.
+
 ## 5.0.2 — 2 novembre 2026
 
 Aucun changement de fonctionnement : préparation de la publication du code.

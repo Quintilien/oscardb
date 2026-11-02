@@ -1,8 +1,10 @@
+<p><img src="docs/oscardb-logo.png" alt="OscarDB" width="392"></p>
+
 # OscarDB
 
 *[English](README.md) · Français*
 
-Version 5.0.2 — 2 novembre 2026 — historique : [CHANGELOG.fr.md](CHANGELOG.fr.md)
+Version 5.0.3 — 2 novembre 2026 — historique : [CHANGELOG.fr.md](CHANGELOG.fr.md)
 
 **Interface web CRUD générique pour bases de données SQLite**
 
@@ -485,5 +487,7 @@ Copyright (C) 2026 PhS & Quintilien
 Ce programme est un logiciel libre, distribué sous les termes de la **GNU Affero General Public License**, version 3 ou (à votre choix) toute version ultérieure (`AGPL-3.0-or-later`). Texte complet dans le fichier `LICENSE`. En résumé : vous pouvez l'utiliser, le modifier et le redistribuer, à condition que toute version modifiée reste sous la même licence et que son code source soit mis à la disposition de ses utilisateurs, y compris lorsqu'elle n'est utilisée qu'en ligne, sur un serveur.
 
 Composant tiers : [PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet) et ses dépendances (`vendor/`), chacun sous sa propre licence (MIT pour PhpSpreadsheet).
+
+Logo (`docs/oscardb-logo.png`, `public/assets/favicon.svg`) : dessiné pour le projet ; lettrage en QTOptimum, police libre.
 
 Illustration (`docs/papy-fichier.jpg`) : « Papy », personnage créé par PhS & Quintilien ; image générée avec ChatGPT (OpenAI) à partir de descriptions écrites et d'images antérieures du personnage.
