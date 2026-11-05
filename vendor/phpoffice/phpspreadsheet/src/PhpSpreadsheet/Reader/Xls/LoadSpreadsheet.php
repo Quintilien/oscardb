@@ -2,6 +2,7 @@
 
 namespace PhpOffice\PhpSpreadsheet\Reader\Xls;
 
+use PhpOffice\PhpSpreadsheet\Cell\AddressRange;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\NamedRange;
@@ -52,7 +53,7 @@ class LoadSpreadsheet extends Xls
         $xls->sheets = [];
         $xls->externalBooks = [];
         $xls->ref = [];
-        $xls->definedname = []; //* @phpstan-ignore-line
+        $xls->definedname = [];
         $xls->sst = [];
         $xls->drawingGroupData = '';
         $xls->xfIndex = 0;
@@ -174,6 +175,7 @@ class LoadSpreadsheet extends Xls
             //        name in line with the formula, not the reverse
             $xls->phpSheet->setTitle($sheet['name'], false, false);
             $xls->phpSheet->setSheetState($sheet['sheetState']);
+            $xls->phpSheetTitle = $sheet['name'];
 
             $xls->pos = $sheet['offset'];
 
@@ -450,10 +452,8 @@ class LoadSpreadsheet extends Xls
                     }
 
                     // calculate the width and height of the shape
-                    /** @var int $startRow */
-                    [$startColumn, $startRow] = Coordinate::coordinateFromString($spContainer->getStartCoordinates());
-                    /** @var int $endRow */
-                    [$endColumn, $endRow] = Coordinate::coordinateFromString($spContainer->getEndCoordinates());
+                    [, $startRow, $startColumn] = Coordinate::indexesFromString($spContainer->getStartCoordinates());
+                    [, $endRow, $endColumn] = Coordinate::indexesFromString($spContainer->getEndCoordinates());
 
                     $startOffsetX = $spContainer->getStartOffsetX();
                     $startOffsetY = $spContainer->getStartOffsetY();
@@ -476,7 +476,7 @@ class LoadSpreadsheet extends Xls
 
                                 if (isset($xls->textObjects[$obj['idObjID']])) {
                                     $textObject = $xls->textObjects[$obj['idObjID']];
-                                    $xls->cellNotes[$obj['idObjID']]['objTextData'] = $textObject; //* @phpstan-ignore-line
+                                    $xls->cellNotes[$obj['idObjID']]['objTextData'] = $textObject; //* @phpstan-ignore offsetAccess.nonOffsetAccessible (I don't know to fix this)
                                 }
                             }
 
@@ -547,10 +547,9 @@ class LoadSpreadsheet extends Xls
             // treat SHAREDFMLA records
             if ($xls->version == self::XLS_BIFF8) {
                 foreach ($xls->sharedFormulaParts as $cell => $baseCell) {
-                    /** @var int $row */
-                    [$column, $row] = Coordinate::coordinateFromString($cell);
+                    [, $row, $column] = Coordinate::indexesFromString($cell);
                     /** @var string $baseCell */
-                    if ($xls->getReadFilter()->readCell($column, $row, $xls->phpSheet->getTitle())) {
+                    if ($xls->readFilter->readCell($column, $row, $xls->phpSheet->getTitle())) {
                         /** @var string */
                         $temp = $xls->sharedFormulas[$baseCell];
                         $formula = $xls->getFormulaFromStructure($temp, $cell);
@@ -654,7 +653,7 @@ class LoadSpreadsheet extends Xls
                                         if ($firstColumn == 'A' && $lastColumn == 'IV') {
                                             // then we have repeating rows
                                             $docSheet->getPageSetup()->setRowsToRepeatAtTop([$firstRow, $lastRow]);
-                                        } elseif ($firstRow == 1 && $lastRow == 65536) {
+                                        } elseif ($firstRow === 1 && $lastRow === AddressRange::MAX_ROW_XLS) {
                                             // then we have repeating columns
                                             $docSheet->getPageSetup()->setColumnsToRepeatAtLeft([$firstColumn, $lastColumn]);
                                         }

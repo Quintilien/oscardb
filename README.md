@@ -4,7 +4,7 @@
 
 *English · [Français](README.fr.md)*
 
-Version 5.0.3 — 2 November 2026 — changelog: [CHANGELOG.md](CHANGELOG.md)
+Version 5.0.4 — 5 November 2026 — changelog: [CHANGELOG.md](CHANGELOG.md)
 
 **Generic web CRUD interface for SQLite databases**
 
@@ -86,7 +86,7 @@ The database stays **clean**: OscarDB never adds an internal table to it. All th
 
 ## Requirements
 
-- PHP 8.1 or later
+- PHP 8.2 or later
 - PHP extension `pdo_sqlite` enabled
 - PHP extension `yaml` enabled (`php-yaml`) — without it, OscarDB works in degraded mode (`.yml` files not read, default presentation only)
 - A web server (Apache, Nginx, Caddy…) or `php -S localhost:8080` for a local test
@@ -156,7 +156,7 @@ Then open `http://localhost:8080` in the browser.
 OscarDB works on **basic** shared hosting, including free offers (for example the free hosting included with an OVH domain name, o2switch, Infomaniak…), even with **FTP access only, without Composer or SSH**.
 
 **Minimum conditions:**
-- PHP 8.1+
+- PHP 8.2+
 - `pdo_sqlite` extension (present by default at almost every host)
 - `yaml` extension — to be checked with the host; without it, OscarDB keeps working but without reading the `.yml` files
 

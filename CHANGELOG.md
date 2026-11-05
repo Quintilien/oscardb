@@ -11,6 +11,20 @@ marking its fifth generation (after the Python versions). The name becomes
 OscarDB and the 5 moves into the version number: OscarDB5 3.0.0 and 3.0.1
 become 5.0.0 and 5.0.1. Earlier entries keep their original numbers.
 
+## 5.0.4 — 5 November 2026
+
+- `vendor/`: PhpSpreadsheet updated from 5.4.0 to 5.10.0, which fixes the
+  security advisories published for earlier versions. OscarDB only uses it
+  to write `.xlsx` exports; the export produces exactly the same file.
+- `vendor/` rebuilt from the official packages, with only the declared
+  dependencies (its metadata still listed packages that OscarDB does not use);
+  `composer.lock` is now committed, so the exact versions can be checked
+  (`composer audit`).
+- PHP 8.2 or later (required by PhpSpreadsheet 5.10; PHP 8.1 is no longer
+  supported by the PHP project). The Docker image uses PHP 8.3.
+
+Updating: `git pull`; on shared hosting, upload `vendor/` and `src/`.
+
 ## 5.0.3 — 2 November 2026
 
 - Logo: a card-index tray, in the same family as the CMS Lite logo

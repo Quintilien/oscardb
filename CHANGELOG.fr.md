@@ -12,6 +12,20 @@ devient OscarDB et le 5 passe dans le numéro de version : OscarDB5 3.0.0 et
 3.0.1 deviennent 5.0.0 et 5.0.1. Les entrées antérieures gardent leur
 numéro d'origine.
 
+## 5.0.4 — 5 novembre 2026
+
+- `vendor/` : PhpSpreadsheet passe de 5.4.0 à 5.10.0, qui corrige les avis de
+  sécurité publiés pour les versions précédentes. OscarDB ne s'en sert que pour
+  écrire les exports `.xlsx` ; l'export produit exactement le même fichier.
+- `vendor/` reconstruit à partir des paquets officiels, avec les seules
+  dépendances déclarées (ses métadonnées citaient encore des paquets
+  qu'OscarDB n'utilise pas) ; `composer.lock` est désormais suivi, ce qui
+  permet de vérifier les versions exactes (`composer audit`).
+- PHP 8.2 ou supérieur (exigé par PhpSpreadsheet 5.10 ; PHP 8.1 n'est plus
+  maintenu par le projet PHP). L'image Docker utilise PHP 8.3.
+
+Mettre à jour : `git pull` ; sur un hébergement mutualisé, téléverser `vendor/` et `src/`.
+
 ## 5.0.3 — 2 novembre 2026
 
 - Logo : un bac à fiches, de la même famille que celui de CMS Lite

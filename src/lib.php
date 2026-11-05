@@ -10,7 +10,7 @@ declare(strict_types=1);
 // Layout (5.0.0, as in CMS Lite): only public/ is served;
 //   config/  data/  src/  vendor/  sit next to it, at the same level.
 const OSCAR_ROOT = __DIR__ . '/..';
-const OSCAR_VERSION = '5.0.3';
+const OSCAR_VERSION = '5.0.4';
 
 // Configuration: config/oscar.php (specific to the installation, ignored by Git),
 // otherwise config/oscar.php.example (the repository works as soon as it is cloned).
